@@ -11,31 +11,31 @@ import java.util.List;
 @Service
 public class MovieService {
 
-    private final MovieRepository movieRepository;
+    private final MovieRepository repository;
 
     @Autowired
-    public MovieService(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
+    public MovieService(MovieRepository repository) {
+        this.repository = repository;
     }
 
-    public List<Movie> findAll() {
-        return movieRepository.findAll();
+    public List<Movie> findAll(){
+        return repository.findAll();
     }
 
-    public Movie findById(String id) {
-        return movieRepository.findById(id).orElse(null);
+    public Movie findById(String id){
+        return repository.findById(id).orElse(null);
     }
 
 
-    public void create(CreateMovie createMovie){
+    public void deleteById(String id) {
+        repository.deleteById(id);
+    }
+
+    public void create(CreateMovie createMovie) {
         Movie movie = new Movie();
         movie.setTitle(createMovie.getTitle());
         movie.setCategory(createMovie.getCategory());
-        movieRepository.save(movie);
-    }
-
-    public void delebteById(String id) {
-        movieRepository.deleteById(id);
+        repository.save(movie);
     }
 
 }

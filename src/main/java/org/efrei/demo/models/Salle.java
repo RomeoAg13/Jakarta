@@ -1,56 +1,50 @@
 package org.efrei.demo.models;
+
 import jakarta.persistence.*;
 
 @Entity
-public class Actor {
+public class Salle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", length = 50)
     private String name;
 
-    @Column(name = "firstname", nullable = false)
-    private String firstname;
+    @Column(name = "capacite", nullable = false)
+    private int capacite;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    public Actor(String name, String firstname) {
+    public Salle(String name, int capacite){
         this.name = name;
-        this.firstname = firstname;
+        this.capacite = capacite;
     }
 
+    public Salle() {
+
+    }
 
     public Movie getMovie() {
         return movie;
     }
-
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
-
-
-    public Actor() {
-
-    }
-
-
-    public String getName() {
+    public String getName(){
         return name;
     }
-
-    public void setName(String name) {
+    public void setName(String name){
         this.name = name;
     }
-
-    public String getFirstname() {
-        return firstname;
+    public int getCapacite(){
+        return capacite;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setCapacite(int capacite){
+        this.capacite = capacite;
     }
 }

@@ -1,8 +1,10 @@
 package org.efrei.demo.dto;
 
 import org.efrei.demo.globals.Category;
+import org.efrei.demo.models.Movie;
 
 public class CreateMovie {
+
     private String title;
     private Category category;
 

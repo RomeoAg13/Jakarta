@@ -1,32 +1,29 @@
 package org.efrei.demo.dto;
 
-public class CreateActor {
-
-    private String firstName;
+public class CreateSalle {
     private String name;
+    private int capacite;
     private String movieId;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCapacite() {
+        return capacite;
+    }
+    public void setCapacite(int capacite) {
+        this.capacite = capacite;
     }
 
     public String getMovieId() {
         return movieId;
     }
-
     public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
+
 }

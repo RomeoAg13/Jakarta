@@ -1,26 +1,24 @@
 package org.efrei.demo.services;
-
 import org.efrei.demo.dto.CreateActor;
 import org.efrei.demo.models.Actor;
-import org.efrei.demo.models.Movie;
 import org.efrei.demo.repository.ActorRepository;
+import org.efrei.demo.dto.CreateMovie;
+import org.efrei.demo.models.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class ActorService {
 
-    private final MovieService movieService;
     private final ActorRepository repository;
+    private final MovieService movieService;
 
     @Autowired
-    public ActorService(MovieService movieService, ActorRepository repository) {
-        this.movieService = movieService;
+    public ActorService(ActorRepository repository, MovieService movieService) {
         this.repository = repository;
+        this.movieService = movieService;
     }
-
 
     public List<Actor> findAll(){
         // SELECT * from actor
@@ -29,12 +27,10 @@ public class ActorService {
     }
 
     public void create(CreateActor createActor) {
-        // INSERT INTO actor VALUES(":firstname", ":values")
         Actor actor = new Actor();
         Movie movie = movieService.findById(createActor.getMovieId());
-        actor.setName(actor.getName());
-        actor.setFirstName(actor.getFirstName());
-
+        actor.setFirstname(createActor.getFirstName());
+        actor.setName(createActor.getName());
         actor.setMovie(movie);
         repository.save(actor);
     }
@@ -52,7 +48,11 @@ public class ActorService {
 
         //UPDATE actor SET (firstname, name) VALUES (:firstname, :name) where id = :id;
         Actor updatedActor = findById(id);
-        updatedActor.setFirstName(actor.getFirstName());
+        updatedActor.setName(actor.getName());
+        updatedActor.setFirstname(actor.getFirstname());
         repository.save(updatedActor);
     }
+
+
+
 }

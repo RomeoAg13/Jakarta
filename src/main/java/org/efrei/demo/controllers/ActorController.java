@@ -5,11 +5,11 @@ import org.efrei.demo.models.Actor;
 import org.efrei.demo.services.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/actors")
 public class ActorController {
@@ -46,8 +46,8 @@ public class ActorController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody CreateActor actor) {
-        service.create(actor);
+    public ResponseEntity<?> create(@RequestBody CreateActor createActor) {
+        service.create(createActor);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
