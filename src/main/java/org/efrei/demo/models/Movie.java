@@ -23,7 +23,7 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Movie(String title, String synopsis, String kv) {
+    public Movie(String title) {
         this.title = title;
     }
 
